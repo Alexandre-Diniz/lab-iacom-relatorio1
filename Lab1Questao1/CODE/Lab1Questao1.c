@@ -19,6 +19,7 @@
 #include "Cpu.h"
 #include "Events.h"
 #include "Interruptor.h"
+#include "SinalFalha.h"
 #include "Sensor_A.h"
 #include "Sensor_B.h"
 #include "Sensor_C.h"
@@ -31,6 +32,8 @@
 #include "IO_Map.h"
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
+
+bool falha;
        
 void main(void)
 {
@@ -58,17 +61,28 @@ do {
 		   
 		   cond_Eve = Interruptor && (!Sensor_A && (!Sensor_B || Sensor_C));
 		   cond_Evs = Interruptor && Sensor_A && Sensor_B && Sensor_C;
+		   falha = Sensor_A && (!Sensor_B || !Sensor_C);
 		   
-		   if(cond_Eve){
-		       Eve_ClrVal();
+		   if(Interruptor){
+  		    if(!falha){
+  		      SinalFalha_ClrVal();
+    		    if(cond_Eve){
+  		        Eve_ClrVal();
+      		  } else {
+      		    Eve_SetVal();
+      		  }
+      		   
+      		  if(cond_Evs){
+      		    Evs_ClrVal();
+      		  } else {
+      		    Evs_SetVal();
+      		  }
+  		    } else {
+  		      Evs_SetVal();
+  		      Eve_SetVal();
+  		      SinalFalha_ClrVal();
+  		    }
 		   } else {
-		       Eve_SetVal();
-		   }
-		   
-		   if(cond_Evs){
-		       Evs_ClrVal();
-		   } else {
-		       Evs_SetVal();
 		   }
 
 }while (start);
@@ -80,7 +94,7 @@ do {
   /*** Processor Expert end of main routine. DON'T WRITE CODE BELOW!!! ***/
 } /*** End of main routine. DO NOT MODIFY THIS TEXT!!! ***/
 
-/* END Exp1Q1DiogoAbreu */
+/* END Lab1Questao1 */
 /*
 ** ###################################################################
 **

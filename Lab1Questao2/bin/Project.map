@@ -28,7 +28,8 @@ STARTUP SECTION
 Entry point: 0xC002 (_EntryPoint)
 _startupData is allocated at 0xC01A and uses 6 Bytes
 extern struct _tagStartup {
-  unsigned nofZeroOut     0
+  unsigned nofZeroOut     1
+  _Range   pZeroOut       0x3000     8
   _Copy    *toCopyDownBeg 0xC02F
 } _startupData;
 
@@ -40,7 +41,7 @@ Section Name                    Size  Type     From       To       Segment
 .startData                        10     R     0xC01A     0xC023   ROM_C000
 NON_BANKED                        11     R     0xC024     0xC02E   ROM_C000
 .copy                              2     R     0xC02F     0xC030   ROM_C000
-.text                            204     R   0x3DB000   0x3DB0CB   PAGE_3D_B000
+.text                            218     R   0x3DB000   0x3DB0D9   PAGE_3D_B000
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
 .abs_section_a                     1   N/I        0xA        0xA   .absSeg2
@@ -263,15 +264,16 @@ NON_BANKED                        11     R     0xC024     0xC02E   ROM_C000
 .abs_section_16e                   2   N/I      0x16E      0x16F   .absSeg219
 .abs_section_17e                   2   N/I      0x17E      0x17F   .absSeg220
 .abs_section_ff80                128     R     0xFF80     0xFFFF   .absSeg221
-CORREIA_A_CODE                    11     R   0x3DB0CC   0x3DB0D6   PAGE_3D_B000
-CORREIA_B_CODE                    11     R   0x3DB0D7   0x3DB0E1   PAGE_3D_B000
-CORREIA_C_CODE                    11     R   0x3DB0E2   0x3DB0EC   PAGE_3D_B000
-CORREIA_D_CODE                    11     R   0x3DB0ED   0x3DB0F7   PAGE_3D_B000
-.stack                           128   R/W     0x3000     0x307F   RAM
+.bss                               8   R/W     0x3000     0x3007   RAM
+CORREIA_A_CODE                    11     R   0x3DB0DA   0x3DB0E4   PAGE_3D_B000
+CORREIA_B_CODE                    11     R   0x3DB0E5   0x3DB0EF   PAGE_3D_B000
+CORREIA_C_CODE                    11     R   0x3DB0F0   0x3DB0FA   PAGE_3D_B000
+CORREIA_D_CODE                    11     R   0x3DB0FB   0x3DB105   PAGE_3D_B000
+.stack                           128   R/W     0x3008     0x3087   RAM
 
 Summary of section sizes per section type:
-READ_ONLY (R):         1A9 (dec:      425)
-READ_WRITE (R/W):       80 (dec:      128)
+READ_ONLY (R):         1B7 (dec:      439)
+READ_WRITE (R/W):       88 (dec:      136)
 NO_INIT (N/I):         104 (dec:      260)
 
 *********************************************************************************************
@@ -290,7 +292,7 @@ MODULE:                 -- Start12.c.o --
 - VARIABLES:
      _startupData                              C01A       6       6       3   .startData  
 - LABELS:
-     __SEG_END_SSTACK                          3080       0       0       1               
+     __SEG_END_SSTACK                          3088       0       0       1               
 MODULE:                 -- Cpu.c.o --
 - PROCEDURES:
      PE_low_level_init                       3DB029      2E      46       2   .text       
@@ -527,23 +529,31 @@ MODULE:                 -- Vectors.c.o --
      _InterruptVectorTable                     FF80      80     128       0   .abs_section_ff80
 MODULE:                 -- Lab1Questao2.c.o --
 - PROCEDURES:
-     main                                    3DB057      75     117       2   .text       
+     main                                    3DB057      83     131       2   .text       
 - VARIABLES:
+     A                                         3000       1       1       4   .bss        
+     B                                         3001       1       1       3   .bss        
+     C                                         3002       1       1       3   .bss        
+     D                                         3003       1       1       2   .bss        
+     CORREIA_A                                 3004       1       1       2   .bss        
+     CORREIA_B                                 3005       1       1       2   .bss        
+     CORREIA_C                                 3006       1       1       2   .bss        
+     CORREIA_D                                 3007       1       1       2   .bss        
 MODULE:                 -- CORREIA_A.c.o --
 - PROCEDURES:
-     CORREIA_A_PutVal                        3DB0CC       B      11       2   CORREIA_A_CODE
+     CORREIA_A_PutVal                        3DB0DA       B      11       2   CORREIA_A_CODE
 - VARIABLES:
 MODULE:                 -- CORREIA_B.c.o --
 - PROCEDURES:
-     CORREIA_B_PutVal                        3DB0D7       B      11       2   CORREIA_B_CODE
+     CORREIA_B_PutVal                        3DB0E5       B      11       2   CORREIA_B_CODE
 - VARIABLES:
 MODULE:                 -- CORREIA_C.c.o --
 - PROCEDURES:
-     CORREIA_C_PutVal                        3DB0E2       B      11       2   CORREIA_C_CODE
+     CORREIA_C_PutVal                        3DB0F0       B      11       2   CORREIA_C_CODE
 - VARIABLES:
 MODULE:                 -- CORREIA_D.c.o --
 - PROCEDURES:
-     CORREIA_D_PutVal                        3DB0ED       B      11       2   CORREIA_D_CODE
+     CORREIA_D_PutVal                        3DB0FB       B      11       2   CORREIA_D_CODE
 - VARIABLES:
 
 *********************************************************************************************
@@ -554,7 +564,7 @@ MODULE STATISTIC
   Cpu.c.o                                      0     72      0
   IO_Map.c.o                                 260      0      0
   Vectors.c.o                                  0      0    128
-  Lab1Questao2.c.o                             0    117      0
+  Lab1Questao2.c.o                             8    131      0
   CORREIA_A.c.o                                0     11      0
   CORREIA_B.c.o                                0     11      0
   CORREIA_C.c.o                                0     11      0
@@ -566,6 +576,8 @@ SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
   Init PE_low_level_init main 
+SECTION: ".bss"
+  A B C D CORREIA_A CORREIA_B CORREIA_C CORREIA_D 
 SECTION: ".init"
   Cpu_Interrupt _EntryPoint 
 SECTION: "NON_BANKED"
@@ -1248,17 +1260,25 @@ OBJECT LIST SORTED BY ADDRESS
      _RDRAD                                     273       1       1       1   .abs_section_273
      _PERAD                                     274       1       1       0   .abs_section_274
      _PPSAD                                     275       1       1       0   .abs_section_275
+     A                                         3000       1       1       4   .bss        
+     B                                         3001       1       1       3   .bss        
+     C                                         3002       1       1       3   .bss        
+     D                                         3003       1       1       2   .bss        
+     CORREIA_A                                 3004       1       1       2   .bss        
+     CORREIA_B                                 3005       1       1       2   .bss        
+     CORREIA_C                                 3006       1       1       2   .bss        
+     CORREIA_D                                 3007       1       1       2   .bss        
      Cpu_Interrupt                             C000       2       2      61   .init       
      _EntryPoint                               C002      18      24       3   .init       
      _Startup                                  C024       B      11       1   NON_BANKED  
      _InterruptVectorTable                     FF80      80     128       0   .abs_section_ff80
      Init                                    3DB000      29      41       2   .text       
      PE_low_level_init                       3DB029      2E      46       2   .text       
-     main                                    3DB057      75     117       2   .text       
-     CORREIA_A_PutVal                        3DB0CC       B      11       2   CORREIA_A_CODE
-     CORREIA_B_PutVal                        3DB0D7       B      11       2   CORREIA_B_CODE
-     CORREIA_C_PutVal                        3DB0E2       B      11       2   CORREIA_C_CODE
-     CORREIA_D_PutVal                        3DB0ED       B      11       2   CORREIA_D_CODE
+     main                                    3DB057      83     131       2   .text       
+     CORREIA_A_PutVal                        3DB0DA       B      11       2   CORREIA_A_CODE
+     CORREIA_B_PutVal                        3DB0E5       B      11       2   CORREIA_B_CODE
+     CORREIA_C_PutVal                        3DB0F0       B      11       2   CORREIA_C_CODE
+     CORREIA_D_PutVal                        3DB0FB       B      11       2   CORREIA_D_CODE
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -1283,7 +1303,8 @@ _InterruptVectorTable     USES Cpu_Interrupt _EntryPoint
 Init                      USES _startupData 
 PE_low_level_init         USES _PUCR _PORTAB _DDRAB _CRGINT _VREGCTRL _RDRIV 
                                 _RDRAD _RDRJ _RDRM _RDRP _RDRS _RDRT _INTCR 
-main                      USES PE_low_level_init _PORTAB CORREIA_A_PutVal 
+main                      USES PE_low_level_init _PORTAB A B C D CORREIA_A 
+                                CORREIA_B CORREIA_C CORREIA_D CORREIA_A_PutVal 
                                 CORREIA_B_PutVal CORREIA_C_PutVal CORREIA_D_PutVal 
 CORREIA_A_PutVal          USES _PORTAB 
 CORREIA_B_PutVal          USES _PORTAB 
@@ -1327,6 +1348,6 @@ STATISTIC SECTION
 
 ExeFile:
 --------
-Number of blocks to be downloaded: 9
-Total size of all blocks to be downloaded: 425
+Number of blocks to be downloaded: 10
+Total size of all blocks to be downloaded: 439
 

@@ -33,14 +33,16 @@
 #include "IO_Map.h"
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
-       
+
+bool A=0, B=0, C=0, D=0, CORREIA_A=0, CORREIA_B=0, CORREIA_C=0, CORREIA_D=0;
+      
 void main(void)
 {
   /* Write your local variable definition here */
 
 
   int start = 1;
-  bool A=0, B=0, C=0, D=0, CORREIA_A=0, CORREIA_B=0, CORREIA_C=0, CORREIA_D=0;
+  
                 
 
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
@@ -58,7 +60,7 @@ do {
 		   C = Sensor_C_GetVal();
 		   D = Sensor_D_GetVal();
 		   
-		   CORREIA_A = !!A;
+		   CORREIA_A = A;
 		   CORREIA_B = !A && B;
 		   CORREIA_C = !A && !B && C;
 		   CORREIA_D = !A && !B && !C && D;

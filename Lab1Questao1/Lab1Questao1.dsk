@@ -11,10 +11,10 @@ StartupPrj=C:\Users\Alejo\Documents\LabIacom\Lab1Questao1\Lab1Questao1.pe
 [AppPanel]
 Status=hiden
 WindowState=NORMAL
-Rect=[78|167|310|496]
+Rect=[26|115|310|496]
 
 [CpuPanel]
-Status=Visible
+Status=hiden
 WindowState=NORMAL
 Rect=[585|89|585|364]
 CpuPanViewMode=Default
@@ -31,7 +31,7 @@ WindowState=NORMAL
 Rect=[0|695|585|115]
 
 [BeanSelector]
-Status=Visible
+Status=hiden
 WindowState=NORMAL
 Rect=[585|453|585|364]
 BF_ForTgtCpuOnly=Yes

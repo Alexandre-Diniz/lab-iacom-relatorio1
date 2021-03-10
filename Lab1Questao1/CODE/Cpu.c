@@ -7,7 +7,7 @@
 **     Version   : Component 02.001, Driver 02.06, CPU db: 2.87.411
 **     Datasheet : MC9S12C128 Rev 01.23 05/2007
 **     Compiler  : CodeWarrior HC12 C Compiler
-**     Date/Time : 10/03/2021, 01:30
+**     Date/Time : 10/03/2021, 15:33
 **     Abstract  :
 **         This component "MC9S12C32_80" implements properties, methods,
 **         and events of the CPU.
@@ -33,6 +33,7 @@
 #include "Eve.h"
 #include "Evs.h"
 #include "Interruptor.h"
+#include "SinalFalha.h"
 #include "Events.h"
 #include "Cpu.h"
 
@@ -206,10 +207,10 @@ void PE_low_level_init(void)
   /* Common initialization of the CPU registers */
   /* PUCR: PUPBE=1 */
   setReg8Bits(PUCR, 0x02U);             
-  /* PORTB: BIT5=0,BIT4=0 */
-  clrReg8Bits(PORTB, 0x30U);            
-  /* DDRB: BIT5=1,BIT4=1,BIT2=0,BIT1=0,BIT0=0 */
-  clrSetReg8Bits(DDRB, 0x07U, 0x30U);   
+  /* PORTB: BIT6=0,BIT5=0,BIT4=0 */
+  clrReg8Bits(PORTB, 0x70U);            
+  /* DDRB: BIT6=1,BIT5=1,BIT4=1,BIT2=0,BIT1=0,BIT0=0 */
+  clrSetReg8Bits(DDRB, 0x07U, 0x70U);   
   /* PIEP: PIEP1=0 */
   clrReg8Bits(PIEP, 0x02U);             
   /* PERP: PERP1=0 */
@@ -243,6 +244,7 @@ void PE_low_level_init(void)
   /* ### BitIO "Eve" init code ... */
   /* ### BitIO "Evs" init code ... */
   /* ### BitIO "Interruptor" init code ... */
+  /* ### BitIO "SinalFalha" init code ... */
   __EI();                              /* Enable interrupts */
 }
 

@@ -11,10 +11,10 @@ StartupPrj=C:\Users\Alejo\Documents\LabIacom\Lab1Questao2\Lab1Questao2.pe
 [AppPanel]
 Status=hiden
 WindowState=NORMAL
-Rect=[156|245|310|496]
+Rect=[78|167|310|496]
 
 [CpuPanel]
-Status=Visible
+Status=hiden
 WindowState=NORMAL
 Rect=[585|89|585|364]
 CpuPanViewMode=Default
@@ -44,7 +44,7 @@ WindowState=NORMAL
 Rect=[186|121|585|606]
 ObjInspectorDockedWithPrphInit=No
 ColWidth01=195
-ColWidth02=392
+ColWidth02=390
 ColWidth11=248
 ColWidth12=497
 ColWidth21=248
@@ -91,7 +91,7 @@ FindScope=FROM_CURSOR
 FindHistory=0
 ReplaceHistory=0
 OpenFilesCount=0
-SelFile=
+SelFile=C:\Users\Alejo\Documents\LabIacom\Lab1Questao2\CODE\Lab1Questao2.c
 SelLine=-1
 FileHistory=0
 

@@ -29,6 +29,7 @@
 #include "Eve.h"
 #include "Evs.h"
 #include "Interruptor.h"
+#include "SinalFalha.h"
 
 #pragma CODE_SEG DEFAULT
 
