@@ -7,7 +7,7 @@
 **     Version   : Component 02.001, Driver 02.06, CPU db: 2.87.411
 **     Datasheet : MC9S12C128 Rev 01.23 05/2007
 **     Compiler  : CodeWarrior HC12 C Compiler
-**     Date/Time : 09/03/2021, 15:11
+**     Date/Time : 10/03/2021, 01:30
 **     Abstract  :
 **         This component "MC9S12C32_80" implements properties, methods,
 **         and events of the CPU.
@@ -30,12 +30,9 @@
 #include "Sensor_A.h"
 #include "Sensor_B.h"
 #include "Sensor_C.h"
-#include "W.h"
-#include "Sensor_D.h"
-#include "CORREIA_A.h"
-#include "CORREIA_B.h"
-#include "CORREIA_C.h"
-#include "CORREIA_D.h"
+#include "Eve.h"
+#include "Evs.h"
+#include "Interruptor.h"
 #include "Events.h"
 #include "Cpu.h"
 
@@ -207,28 +204,18 @@ void _EntryPoint(void)
 void PE_low_level_init(void)
 {
   /* Common initialization of the CPU registers */
-  /* PIEP: PIEP3=0,PIEP2=0,PIEP1=0,PIEP0=0 */
-  clrReg8Bits(PIEP, 0x0FU);             
-  /* PPSP: PPSP1=0 */
-  clrReg8Bits(PPSP, 0x02U);             
-  /* PERP: PERP3=0,PERP2=0,PERP1=1,PERP0=0 */
-  clrSetReg8Bits(PERP, 0x0DU, 0x02U);   
-  /* PTP: PTP2=0,PTP0=0 */
-  clrReg8Bits(PTP, 0x05U);              
-  /* DDRP: DDRP3=0,DDRP2=1,DDRP1=0,DDRP0=1 */
-  clrSetReg8Bits(DDRP, 0x0AU, 0x05U);   
   /* PUCR: PUPBE=1 */
   setReg8Bits(PUCR, 0x02U);             
-  /* PORTB: BIT6=0 */
-  clrReg8Bits(PORTB, 0x40U);            
-  /* DDRB: BIT6=1,BIT1=0,BIT0=0 */
-  clrSetReg8Bits(DDRB, 0x03U, 0x40U);   
-  /* PTT: PTT1=0,PTT0=0 */
-  clrReg8Bits(PTT, 0x03U);              
-  /* PERT: PERT1=0,PERT0=0 */
-  clrReg8Bits(PERT, 0x03U);             
-  /* DDRT: DDRT1=1,DDRT0=1 */
-  setReg8Bits(DDRT, 0x03U);             
+  /* PORTB: BIT5=0,BIT4=0 */
+  clrReg8Bits(PORTB, 0x30U);            
+  /* DDRB: BIT5=1,BIT4=1,BIT2=0,BIT1=0,BIT0=0 */
+  clrSetReg8Bits(DDRB, 0x07U, 0x30U);   
+  /* PIEP: PIEP1=0 */
+  clrReg8Bits(PIEP, 0x02U);             
+  /* PERP: PERP1=0 */
+  clrReg8Bits(PERP, 0x02U);             
+  /* DDRP: DDRP1=0 */
+  clrReg8Bits(DDRP, 0x02U);             
   /* CRGINT: LOCKIE=0,SCMIE=0 */
   clrReg8Bits(CRGINT, 0x12U);           
   /* VREGCTRL: LVIE=0 */
@@ -253,12 +240,9 @@ void PE_low_level_init(void)
   /* ### BitIO "Sensor_A" init code ... */
   /* ### BitIO "Sensor_B" init code ... */
   /* ### BitIO "Sensor_C" init code ... */
-  /* ### BitIO "W" init code ... */
-  /* ### BitIO "Sensor_D" init code ... */
-  /* ### BitIO "CORREIA_A" init code ... */
-  /* ### BitIO "CORREIA_B" init code ... */
-  /* ### BitIO "CORREIA_C" init code ... */
-  /* ### BitIO "CORREIA_D" init code ... */
+  /* ### BitIO "Eve" init code ... */
+  /* ### BitIO "Evs" init code ... */
+  /* ### BitIO "Interruptor" init code ... */
   __EI();                              /* Enable interrupts */
 }
 

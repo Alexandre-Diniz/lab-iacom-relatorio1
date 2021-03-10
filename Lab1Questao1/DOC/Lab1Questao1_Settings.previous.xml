@@ -334,11 +334,11 @@ asm(BGND);
 
     <Properties>
       <Component_name v="Sensor_A"/>
-      <Pin_for_I_O v="PP1_PWM1_KWP1"/>
+      <Pin_for_I_O v="PB0_ADDR0_DATA0"/>
       <Pin_signal v=""/>
       <Pull_resistor v="pull up"/>
       <Open_drain sel_value="The settings is irrelevant for input direction" v="push-pull"/>
-      <Reduced_drive_for_PP1 v="no"/>
+      <Reduced_drive_for_port_B v="no"/>
       <Direction v="Input"/>
       <group name="Initialization">
         <Init__direction v="Input"/>
@@ -370,7 +370,7 @@ asm(BGND);
 
     <Properties>
       <Component_name v="Sensor_B"/>
-      <Pin_for_I_O v="PB0_ADDR0_DATA0"/>
+      <Pin_for_I_O v="PB1_ADDR1_DATA1"/>
       <Pin_signal v=""/>
       <Pull_resistor v="pull up"/>
       <Open_drain sel_value="The settings is irrelevant for input direction" v="push-pull"/>
@@ -406,7 +406,7 @@ asm(BGND);
 
     <Properties>
       <Component_name v="Sensor_C"/>
-      <Pin_for_I_O v="PB1_ADDR1_DATA1"/>
+      <Pin_for_I_O v="PB2_ADDR2_DATA2"/>
       <Pin_signal v=""/>
       <Pull_resistor v="pull up"/>
       <Open_drain sel_value="The settings is irrelevant for input direction" v="push-pull"/>
@@ -437,17 +437,17 @@ asm(BGND);
     </Events>
   </Bean>
 
-  <Bean name="W" type="BitIO">
+  <Bean name="Eve" type="BitIO">
     <Enabled v="Y"/>
 
     <Properties>
-      <Component_name v="W"/>
-      <Pin_for_I_O v="PB6_ADDR6_DATA6"/>
+      <Component_name v="Eve"/>
+      <Pin_for_I_O v="PP3_PWM3_KWP3"/>
       <Pin_signal v=""/>
-      <Pull_resistor v="pull up"/>
+      <Pull_resistor sel_value="no pull resistor" v="autoselected pull"/>
       <Open_drain v="push-pull"/>
-      <Reduced_drive_for_port_B v="no"/>
-      <Direction v="Output"/>
+      <Reduced_drive_for_PP3 v="no"/>
+      <Direction v="Input/Output"/>
       <group name="Initialization">
         <Init__direction v="Output"/>
         <Init__value v="0"/>
@@ -458,7 +458,7 @@ asm(BGND);
 
     <Methods>
       <GetDir v="don&apos;t generate code"/>
-      <SetDir v="don&apos;t generate code"/>
+      <SetDir v="generate code"/>
       <SetInput v="don&apos;t generate code"/>
       <SetOutput v="don&apos;t generate code"/>
       <GetVal v="generate code"/>
@@ -473,47 +473,11 @@ asm(BGND);
     </Events>
   </Bean>
 
-  <Bean name="Sensor_D" type="BitIO">
+  <Bean name="Evs" type="BitIO">
     <Enabled v="Y"/>
 
     <Properties>
-      <Component_name v="Sensor_D"/>
-      <Pin_for_I_O v="PP3_PWM3_KWP3"/>
-      <Pin_signal v=""/>
-      <Pull_resistor sel_value="no pull resistor" v="autoselected pull"/>
-      <Open_drain sel_value="The settings is irrelevant for input direction" v="push-pull"/>
-      <Reduced_drive_for_PP3 v="no"/>
-      <Direction v="Input"/>
-      <group name="Initialization">
-        <Init__direction v="Input"/>
-        <Init__value v="0"/>
-      </group>
-      <Safe_mode v="yes"/>
-      <Optimization_for v="speed"/>
-    </Properties>
-
-    <Methods>
-      <GetDir v="don&apos;t generate code"/>
-      <SetDir v="don&apos;t generate code"/>
-      <SetInput v="don&apos;t generate code"/>
-      <SetOutput v="don&apos;t generate code"/>
-      <GetVal v="generate code"/>
-      <PutVal v="don&apos;t generate code"/>
-      <ClrVal v="don&apos;t generate code"/>
-      <SetVal v="don&apos;t generate code"/>
-      <NegVal v="don&apos;t generate code"/>
-      <GetRawVal v="don&apos;t generate code"/>
-    </Methods>
-
-    <Events>
-    </Events>
-  </Bean>
-
-  <Bean name="CORREIA_A" type="BitIO">
-    <Enabled v="Y"/>
-
-    <Properties>
-      <Component_name v="CORREIA_A"/>
+      <Component_name v="Evs"/>
       <Pin_for_I_O v="PP2_PWM2_KWP2"/>
       <Pin_signal v=""/>
       <Pull_resistor sel_value="no pull resistor" v="autoselected pull"/>
@@ -545,88 +509,16 @@ asm(BGND);
     </Events>
   </Bean>
 
-  <Bean name="CORREIA_B" type="BitIO">
+  <Bean name="Interruptor" type="BitIO">
     <Enabled v="Y"/>
 
     <Properties>
-      <Component_name v="CORREIA_B"/>
-      <Pin_for_I_O v="PP0_PWM0_KWP0"/>
+      <Component_name v="Interruptor"/>
+      <Pin_for_I_O v="PP1_PWM1_KWP1"/>
       <Pin_signal v=""/>
       <Pull_resistor sel_value="no pull resistor" v="autoselected pull"/>
       <Open_drain v="push-pull"/>
-      <Reduced_drive_for_PP0 v="no"/>
-      <Direction v="Input/Output"/>
-      <group name="Initialization">
-        <Init__direction v="Output"/>
-        <Init__value v="0"/>
-      </group>
-      <Safe_mode v="yes"/>
-      <Optimization_for v="speed"/>
-    </Properties>
-
-    <Methods>
-      <GetDir v="don&apos;t generate code"/>
-      <SetDir v="generate code"/>
-      <SetInput v="don&apos;t generate code"/>
-      <SetOutput v="don&apos;t generate code"/>
-      <GetVal v="generate code"/>
-      <PutVal v="generate code"/>
-      <ClrVal v="generate code"/>
-      <SetVal v="generate code"/>
-      <NegVal v="don&apos;t generate code"/>
-      <GetRawVal v="don&apos;t generate code"/>
-    </Methods>
-
-    <Events>
-    </Events>
-  </Bean>
-
-  <Bean name="CORREIA_C" type="BitIO">
-    <Enabled v="Y"/>
-
-    <Properties>
-      <Component_name v="CORREIA_C"/>
-      <Pin_for_I_O v="PT0_PWM0_IOC0"/>
-      <Pin_signal v=""/>
-      <Pull_resistor sel_value="no pull resistor" v="autoselected pull"/>
-      <Open_drain v="push-pull"/>
-      <Reduced_drive_for_PT0 v="no"/>
-      <Direction v="Input/Output"/>
-      <group name="Initialization">
-        <Init__direction v="Output"/>
-        <Init__value v="0"/>
-      </group>
-      <Safe_mode v="yes"/>
-      <Optimization_for v="speed"/>
-    </Properties>
-
-    <Methods>
-      <GetDir v="don&apos;t generate code"/>
-      <SetDir v="generate code"/>
-      <SetInput v="don&apos;t generate code"/>
-      <SetOutput v="don&apos;t generate code"/>
-      <GetVal v="generate code"/>
-      <PutVal v="generate code"/>
-      <ClrVal v="generate code"/>
-      <SetVal v="generate code"/>
-      <NegVal v="don&apos;t generate code"/>
-      <GetRawVal v="don&apos;t generate code"/>
-    </Methods>
-
-    <Events>
-    </Events>
-  </Bean>
-
-  <Bean name="CORREIA_D" type="BitIO">
-    <Enabled v="Y"/>
-
-    <Properties>
-      <Component_name v="CORREIA_D"/>
-      <Pin_for_I_O v="PT1_PWM1_IOC1"/>
-      <Pin_signal v=""/>
-      <Pull_resistor sel_value="no pull resistor" v="autoselected pull"/>
-      <Open_drain v="push-pull"/>
-      <Reduced_drive_for_PT1 v="no"/>
+      <Reduced_drive_for_PP1 v="no"/>
       <Direction v="Input/Output"/>
       <group name="Initialization">
         <Init__direction v="Output"/>

@@ -2,7 +2,7 @@
 PE_DesktopFileVersion=1094
 
 [Desktop]
-StartupPrj=C:\Users\Alejo\Documents\Lab1Questao1\Lab1Questao1.pe
+StartupPrj=C:\Users\Alejo\Documents\LabIacom\Lab1Questao1\Lab1Questao1.pe
 
 [PE_IDE_PlugIn]
 
@@ -11,7 +11,7 @@ StartupPrj=C:\Users\Alejo\Documents\Lab1Questao1\Lab1Questao1.pe
 [AppPanel]
 Status=hiden
 WindowState=NORMAL
-Rect=[156|245|310|496]
+Rect=[78|167|310|496]
 
 [CpuPanel]
 Status=Visible
@@ -91,7 +91,7 @@ FindScope=FROM_CURSOR
 FindHistory=0
 ReplaceHistory=0
 OpenFilesCount=0
-SelFile=C:\Users\Alejo\Documents\Lab1Questao1\CODE\Lab1Questao1.c
+SelFile=C:\Users\Alejo\Documents\LabIacom\Lab1Questao1\CODE\Lab1Questao1.c
 SelLine=-1
 FileHistory=0
 

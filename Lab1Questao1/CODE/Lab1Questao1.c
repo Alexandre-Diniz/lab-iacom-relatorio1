@@ -18,15 +18,12 @@
 /* Including needed modules to compile this module/procedure */
 #include "Cpu.h"
 #include "Events.h"
+#include "Interruptor.h"
 #include "Sensor_A.h"
 #include "Sensor_B.h"
 #include "Sensor_C.h"
-#include "W.h"
-#include "Sensor_D.h"
-#include "CORREIA_A.h"
-#include "CORREIA_B.h"
-#include "CORREIA_C.h"
-#include "CORREIA_D.h"
+#include "Eve.h"
+#include "Evs.h"
 /* Include shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -41,7 +38,7 @@ void main(void)
 
 
   int start = 1;
-  bool 
+  bool cond_Eve, cond_Evs, Sensor_A, Sensor_B, Sensor_C, Interruptor;
                 
 
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
@@ -54,7 +51,25 @@ void main(void)
 
 do {
 
-
+		   Interruptor = Interruptor_GetVal();
+		   Sensor_A = Sensor_A_GetVal();
+		   Sensor_B = Sensor_B_GetVal();
+		   Sensor_C = Sensor_C_GetVal();
+		   
+		   cond_Eve = Interruptor && (!Sensor_A && (!Sensor_B || Sensor_C));
+		   cond_Evs = Interruptor && Sensor_A && Sensor_B && Sensor_C;
+		   
+		   if(cond_Eve){
+		       Eve_ClrVal();
+		   } else {
+		       Eve_SetVal();
+		   }
+		   
+		   if(cond_Evs){
+		       Evs_ClrVal();
+		   } else {
+		       Evs_SetVal();
+		   }
 
 }while (start);
 
@@ -65,7 +80,7 @@ do {
   /*** Processor Expert end of main routine. DON'T WRITE CODE BELOW!!! ***/
 } /*** End of main routine. DO NOT MODIFY THIS TEXT!!! ***/
 
-/* END Lab1Questao1 */
+/* END Exp1Q1DiogoAbreu */
 /*
 ** ###################################################################
 **

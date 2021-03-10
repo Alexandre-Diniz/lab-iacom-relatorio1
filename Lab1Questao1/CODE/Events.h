@@ -26,12 +26,9 @@
 #include "Sensor_A.h"
 #include "Sensor_B.h"
 #include "Sensor_C.h"
-#include "W.h"
-#include "Sensor_D.h"
-#include "CORREIA_A.h"
-#include "CORREIA_B.h"
-#include "CORREIA_C.h"
-#include "CORREIA_D.h"
+#include "Eve.h"
+#include "Evs.h"
+#include "Interruptor.h"
 
 #pragma CODE_SEG DEFAULT
 

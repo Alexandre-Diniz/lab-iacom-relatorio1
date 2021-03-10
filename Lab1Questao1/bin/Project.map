@@ -1,5 +1,5 @@
 
-PROGRAM "C:\Users\Alejo\Documents\Lab1Questao1\bin\Project.abs"
+PROGRAM "C:\Users\Alejo\Documents\LabIacom\Lab1Questao1\bin\Project.abs"
 
 *********************************************************************************************
 TARGET SECTION
@@ -17,10 +17,6 @@ Cpu.c.o                                 Model: BANKED,        Lang: ANSI-C,     
 IO_Map.c.o                              Model: BANKED,        Lang: ANSI-C,        Compiler Version: ANSI-C/cC++ Compiler for HC12 V-5.0.46 Build 15249, Sep  7 2015
 Vectors.c.o                             Model: BANKED,        Lang: ANSI-C,        Compiler Version: ANSI-C/cC++ Compiler for HC12 V-5.0.46 Build 15249, Sep  7 2015
 Lab1Questao1.c.o                        Model: BANKED,        Lang: ANSI-C,        Compiler Version: ANSI-C/cC++ Compiler for HC12 V-5.0.46 Build 15249, Sep  7 2015
-CORREIA_A.c.o                           Model: BANKED,        Lang: ANSI-C,        Compiler Version: ANSI-C/cC++ Compiler for HC12 V-5.0.46 Build 15249, Sep  7 2015
-CORREIA_B.c.o                           Model: BANKED,        Lang: ANSI-C,        Compiler Version: ANSI-C/cC++ Compiler for HC12 V-5.0.46 Build 15249, Sep  7 2015
-CORREIA_C.c.o                           Model: BANKED,        Lang: ANSI-C,        Compiler Version: ANSI-C/cC++ Compiler for HC12 V-5.0.46 Build 15249, Sep  7 2015
-CORREIA_D.c.o                           Model: BANKED,        Lang: ANSI-C,        Compiler Version: ANSI-C/cC++ Compiler for HC12 V-5.0.46 Build 15249, Sep  7 2015
 
 *********************************************************************************************
 STARTUP SECTION
@@ -40,7 +36,7 @@ Section Name                    Size  Type     From       To       Segment
 .startData                        10     R     0xC01A     0xC023   ROM_C000
 NON_BANKED                        11     R     0xC024     0xC02E   ROM_C000
 .copy                              2     R     0xC02F     0xC030   ROM_C000
-.text                            254     R   0x3DB000   0x3DB0FD   PAGE_3D_B000
+.text                            211     R   0x3DB000   0x3DB0D2   PAGE_3D_B000
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
 .abs_section_a                     1   N/I        0xA        0xA   .absSeg2
@@ -263,14 +259,10 @@ NON_BANKED                        11     R     0xC024     0xC02E   ROM_C000
 .abs_section_16e                   2   N/I      0x16E      0x16F   .absSeg219
 .abs_section_17e                   2   N/I      0x17E      0x17F   .absSeg220
 .abs_section_ff80                128     R     0xFF80     0xFFFF   .absSeg221
-CORREIA_A_CODE                    13     R   0x3DB0FE   0x3DB10A   PAGE_3D_B000
-CORREIA_B_CODE                    13     R   0x3DB10B   0x3DB117   PAGE_3D_B000
-CORREIA_C_CODE                    13     R   0x3DB118   0x3DB124   PAGE_3D_B000
-CORREIA_D_CODE                    13     R   0x3DB125   0x3DB131   PAGE_3D_B000
 .stack                           128   R/W     0x3000     0x307F   RAM
 
 Summary of section sizes per section type:
-READ_ONLY (R):         1E3 (dec:      483)
+READ_ONLY (R):         184 (dec:      388)
 READ_WRITE (R/W):       80 (dec:      128)
 NO_INIT (N/I):         104 (dec:      260)
 
@@ -293,7 +285,7 @@ MODULE:                 -- Start12.c.o --
      __SEG_END_SSTACK                          3080       0       0       1               
 MODULE:                 -- Cpu.c.o --
 - PROCEDURES:
-     PE_low_level_init                       3DB029      5E      94       2   .text       
+     PE_low_level_init                       3DB029      3E      62       2   .text       
      Cpu_Interrupt                             C000       2       2      61   .init       
      _EntryPoint                               C002      18      24       3   .init       
 - VARIABLES:
@@ -439,11 +431,11 @@ MODULE:                 -- IO_Map.c.o --
      _CANTXDSR7                                 17B       1       1       0   .abs_section_17b
      _CANTXDLR                                  17C       1       1       0   .abs_section_17c
      _CANTXTBPR                                 17D       1       1       0   .abs_section_17d
-     _PTT                                       240       1       1       5   .abs_section_240
+     _PTT                                       240       1       1       0   .abs_section_240
      _PTIT                                      241       1       1       0   .abs_section_241
-     _DDRT                                      242       1       1       1   .abs_section_242
+     _DDRT                                      242       1       1       0   .abs_section_242
      _RDRT                                      243       1       1       1   .abs_section_243
-     _PERT                                      244       1       1       1   .abs_section_244
+     _PERT                                      244       1       1       0   .abs_section_244
      _PPST                                      245       1       1       0   .abs_section_245
      _MODRR                                     247       1       1       0   .abs_section_247
      _PTS                                       248       1       1       0   .abs_section_248
@@ -460,12 +452,12 @@ MODULE:                 -- IO_Map.c.o --
      _PERM                                      254       1       1       0   .abs_section_254
      _PPSM                                      255       1       1       0   .abs_section_255
      _WOMM                                      256       1       1       0   .abs_section_256
-     _PTP                                       258       1       1       7   .abs_section_258
+     _PTP                                       258       1       1       1   .abs_section_258
      _PTIP                                      259       1       1       0   .abs_section_259
-     _DDRP                                      25A       1       1       2   .abs_section_25a
+     _DDRP                                      25A       1       1       1   .abs_section_25a
      _RDRP                                      25B       1       1       1   .abs_section_25b
-     _PERP                                      25C       1       1       2   .abs_section_25c
-     _PPSP                                      25D       1       1       1   .abs_section_25d
+     _PERP                                      25C       1       1       1   .abs_section_25c
+     _PPSP                                      25D       1       1       0   .abs_section_25d
      _PIEP                                      25E       1       1       1   .abs_section_25e
      _PIFP                                      25F       1       1       0   .abs_section_25f
      _PTJ                                       268       1       1       0   .abs_section_268
@@ -482,7 +474,7 @@ MODULE:                 -- IO_Map.c.o --
      _RDRAD                                     273       1       1       1   .abs_section_273
      _PERAD                                     274       1       1       0   .abs_section_274
      _PPSAD                                     275       1       1       0   .abs_section_275
-     _PORTAB                                      0       2       2       3   .abs_section_0
+     _PORTAB                                      0       2       2       8   .abs_section_0
      _DDRAB                                       2       2       2       2   .abs_section_2
      _PARTID                                     1A       2       2       0   .abs_section_1a
      _DBGTB                                      22       2       2       0   .abs_section_22
@@ -527,23 +519,7 @@ MODULE:                 -- Vectors.c.o --
      _InterruptVectorTable                     FF80      80     128       0   .abs_section_ff80
 MODULE:                 -- Lab1Questao1.c.o --
 - PROCEDURES:
-     main                                    3DB087      77     119       2   .text       
-- VARIABLES:
-MODULE:                 -- CORREIA_A.c.o --
-- PROCEDURES:
-     CORREIA_A_PutVal                        3DB0FE       D      13       2   CORREIA_A_CODE
-- VARIABLES:
-MODULE:                 -- CORREIA_B.c.o --
-- PROCEDURES:
-     CORREIA_B_PutVal                        3DB10B       D      13       2   CORREIA_B_CODE
-- VARIABLES:
-MODULE:                 -- CORREIA_C.c.o --
-- PROCEDURES:
-     CORREIA_C_PutVal                        3DB118       D      13       2   CORREIA_C_CODE
-- VARIABLES:
-MODULE:                 -- CORREIA_D.c.o --
-- PROCEDURES:
-     CORREIA_D_PutVal                        3DB125       D      13       2   CORREIA_D_CODE
+     main                                    3DB067      6C     108       2   .text       
 - VARIABLES:
 
 *********************************************************************************************
@@ -551,14 +527,10 @@ MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   Start12.c.o                                  0     52      0
-  Cpu.c.o                                      0    120      0
+  Cpu.c.o                                      0     88      0
   IO_Map.c.o                                 260      0      0
   Vectors.c.o                                  0      0    128
-  Lab1Questao1.c.o                             0    119      0
-  CORREIA_A.c.o                                0     13      0
-  CORREIA_B.c.o                                0     13      0
-  CORREIA_C.c.o                                0     13      0
-  CORREIA_D.c.o                                0     13      0
+  Lab1Questao1.c.o                             0    108      0
   other                                      128     10      2
 
 *********************************************************************************************
@@ -570,14 +542,6 @@ SECTION: ".init"
   Cpu_Interrupt _EntryPoint 
 SECTION: "NON_BANKED"
   _Startup 
-SECTION: "CORREIA_A_CODE"
-  CORREIA_A_PutVal 
-SECTION: "CORREIA_B_CODE"
-  CORREIA_B_PutVal 
-SECTION: "CORREIA_C_CODE"
-  CORREIA_C_PutVal 
-SECTION: "CORREIA_D_CODE"
-  CORREIA_D_PutVal 
 SECTION: ".abs_section_8"
   _PORTE 
 SECTION: ".abs_section_9"
@@ -1027,7 +991,7 @@ SECTION: ".abs_section_ff80"
 OBJECT LIST SORTED BY ADDRESS
      Name                                      Addr   hSize   dSize     Ref    Section   RLIB
 ---------------------------------------------------------------------------------------------
-     _PORTAB                                      0       2       2       3   .abs_section_0
+     _PORTAB                                      0       2       2       8   .abs_section_0
      _DDRAB                                       2       2       2       2   .abs_section_2
      _PORTE                                       8       1       1       0   .abs_section_8
      _DDRE                                        9       1       1       0   .abs_section_9
@@ -1205,11 +1169,11 @@ OBJECT LIST SORTED BY ADDRESS
      _CANTXDLR                                  17C       1       1       0   .abs_section_17c
      _CANTXTBPR                                 17D       1       1       0   .abs_section_17d
      _CANTXTSR                                  17E       2       2       0   .abs_section_17e
-     _PTT                                       240       1       1       5   .abs_section_240
+     _PTT                                       240       1       1       0   .abs_section_240
      _PTIT                                      241       1       1       0   .abs_section_241
-     _DDRT                                      242       1       1       1   .abs_section_242
+     _DDRT                                      242       1       1       0   .abs_section_242
      _RDRT                                      243       1       1       1   .abs_section_243
-     _PERT                                      244       1       1       1   .abs_section_244
+     _PERT                                      244       1       1       0   .abs_section_244
      _PPST                                      245       1       1       0   .abs_section_245
      _MODRR                                     247       1       1       0   .abs_section_247
      _PTS                                       248       1       1       0   .abs_section_248
@@ -1226,12 +1190,12 @@ OBJECT LIST SORTED BY ADDRESS
      _PERM                                      254       1       1       0   .abs_section_254
      _PPSM                                      255       1       1       0   .abs_section_255
      _WOMM                                      256       1       1       0   .abs_section_256
-     _PTP                                       258       1       1       7   .abs_section_258
+     _PTP                                       258       1       1       1   .abs_section_258
      _PTIP                                      259       1       1       0   .abs_section_259
-     _DDRP                                      25A       1       1       2   .abs_section_25a
+     _DDRP                                      25A       1       1       1   .abs_section_25a
      _RDRP                                      25B       1       1       1   .abs_section_25b
-     _PERP                                      25C       1       1       2   .abs_section_25c
-     _PPSP                                      25D       1       1       1   .abs_section_25d
+     _PERP                                      25C       1       1       1   .abs_section_25c
+     _PPSP                                      25D       1       1       0   .abs_section_25d
      _PIEP                                      25E       1       1       1   .abs_section_25e
      _PIFP                                      25F       1       1       0   .abs_section_25f
      _PTJ                                       268       1       1       0   .abs_section_268
@@ -1253,12 +1217,8 @@ OBJECT LIST SORTED BY ADDRESS
      _Startup                                  C024       B      11       1   NON_BANKED  
      _InterruptVectorTable                     FF80      80     128       0   .abs_section_ff80
      Init                                    3DB000      29      41       2   .text       
-     PE_low_level_init                       3DB029      5E      94       2   .text       
-     main                                    3DB087      77     119       2   .text       
-     CORREIA_A_PutVal                        3DB0FE       D      13       2   CORREIA_A_CODE
-     CORREIA_B_PutVal                        3DB10B       D      13       2   CORREIA_B_CODE
-     CORREIA_C_PutVal                        3DB118       D      13       2   CORREIA_C_CODE
-     CORREIA_D_PutVal                        3DB125       D      13       2   CORREIA_D_CODE
+     PE_low_level_init                       3DB029      3E      62       2   .text       
+     main                                    3DB067      6C     108       2   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -1281,15 +1241,10 @@ _EntryPoint               USES _INITRM _MISC _PEAR _CLKSEL _PLLCTL _Startup
 _Startup                  USES __SEG_END_SSTACK Init main 
 _InterruptVectorTable     USES Cpu_Interrupt _EntryPoint 
 Init                      USES _startupData 
-PE_low_level_init         USES _PIEP _PPSP _PERP _PTP _DDRP _PUCR _PORTAB 
-                                _DDRAB _PTT _PERT _DDRT _CRGINT _VREGCTRL _RDRIV 
-                                _RDRAD _RDRJ _RDRM _RDRP _RDRS _RDRT _INTCR 
-main                      USES PE_low_level_init _PTP _PORTAB CORREIA_A_PutVal 
-                                CORREIA_B_PutVal CORREIA_C_PutVal CORREIA_D_PutVal 
-CORREIA_A_PutVal          USES _PTP 
-CORREIA_B_PutVal          USES _PTP 
-CORREIA_C_PutVal          USES _PTT 
-CORREIA_D_PutVal          USES _PTT 
+PE_low_level_init         USES _PUCR _PORTAB _DDRAB _PIEP _PERP _DDRP _CRGINT 
+                                _VREGCTRL _RDRIV _RDRAD _RDRJ _RDRM _RDRP _RDRS _RDRT 
+                                _INTCR 
+main                      USES PE_low_level_init _PTP _PORTAB 
 
 *********************************************************************************************
 DEPENDENCY TREE
@@ -1299,14 +1254,6 @@ DEPENDENCY TREE
  +- main                
  |  | 
  |  +- PE_low_level_init   
- |  |    
- |  +- CORREIA_A_PutVal    
- |  |    
- |  +- CORREIA_B_PutVal    
- |  |    
- |  +- CORREIA_C_PutVal    
- |  |    
- |  +- CORREIA_D_PutVal    
  |       
  +- _EntryPoint         
     | 
@@ -1328,6 +1275,6 @@ STATISTIC SECTION
 
 ExeFile:
 --------
-Number of blocks to be downloaded: 10
-Total size of all blocks to be downloaded: 483
+Number of blocks to be downloaded: 6
+Total size of all blocks to be downloaded: 388
 
